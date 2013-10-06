@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 <head>
@@ -13,9 +14,26 @@
 
 <body>
 
-	<h1>Der ultimative Fitness-Coach</h1>
-	<h2>Projektarbeit in Java III von Stephanie Gerlich</h2>
+<ui:composition template="WEB-INF/template/common/commonLayout2.xhtml">
 
+	<ui:define name="content">
+
+		<h:outputText value="Bist du neu hier oder hast du bereits einen Account?" /> 
+	
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
+  
+      	 <h:outputText value="Options: " />   
+      	 <p:selectOneRadio id="options" value="#{formBean.number}">  
+           	 <f:selectItem itemLabel="Einloggen" itemValue="1" />  
+           	 <f:selectItem itemLabel="Registrieren" itemValue="2" />  
+       	 </p:selectOneRadio>  
+  
+   		 </h:panelGrid>  
+   		 
+	</ui:define>
+
+
+</ui:composition>
 
 </body>
 
