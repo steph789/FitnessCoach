@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/profile.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/news.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/newentry.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/reporting.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/newuser.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>newuser.xhtml</display-name>
+		<from-view-id>/newuser.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/profile.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/weekplaner.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>
