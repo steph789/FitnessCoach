@@ -15,7 +15,7 @@ public class DBTest {
 		//Class.forName("com.mysql.jdbc.Driver").newInstance();
 		//---------------- URL+DBName, Username, Passwort
 		try {
-			///Connection con  = DriverManager.getConnection("jdbc:mysql://localhost:3306/java2","root","");
+			
 			
 			Connection con  = DriverManager.getConnection(	DBProp.get("url")+DBProp.get("db"),
 															DBProp.get("user"),
@@ -29,7 +29,7 @@ public class DBTest {
 			
 			
 			while(result.next()){
-				int id = result.getInt("id");
+				int user_id = result.getInt("user_id");
 				
 				String username = result.getString("username");
 				String firstname = result.getString("firstname");
@@ -37,7 +37,7 @@ public class DBTest {
 				double height = result.getDouble("height");
 				
 				
-				System.out.println("id: "+id+ ", Name: "+ username + " "+firstname +" " + lastname +", Größe: "+height);
+				System.out.println("id: "+user_id+ ", Name: "+ username + " "+firstname +" " + lastname +", Größe: "+height);
 				
 				
 			}
@@ -48,12 +48,12 @@ public class DBTest {
 			
 			Statement insertStatement = con.createStatement();
 			
-			int d = insertStatement.executeUpdate("INSERT INTO user(id, username, password,firstname,lastname,email,yearbirth,sex,height) VALUE (NULL, 'tester','test','Paul', 'Muster','pm@muster.de',1982,1,1.75)");
+			int d = insertStatement.executeUpdate("INSERT INTO user(user_id, username, password,firstname,lastname,email,yearbirth,sex,height) VALUE (NULL, 'tester','test','Paul', 'Muster','pm@muster.de',1982,1,1.75)");
 			System.out.println("Anzahl Datensätze eingefügt: "+d);
 			
 			//---------------------------- Delete ---------------------------------------------------------------
 			
-			String delQuery = "DELETE FROM user WHERE id = ?";
+			String delQuery = "DELETE FROM user WHERE user_id = ?";
 			PreparedStatement pstatement = con.prepareStatement(delQuery);
 			pstatement.setInt(1, 4); // ? , id (? wird durch wert ersetzt)
 			
@@ -61,9 +61,9 @@ public class DBTest {
 			
 			//------------------------ Update -------------------------------------------
 			
-			String updateQuery = "UPDATE gehalt SET lastname = ? WHERE id = ?";
+			String updateQuery = "UPDATE user SET lastname = ? WHERE user_id = ?";
 			PreparedStatement prepStatement = con.prepareStatement(updateQuery);
-			prepStatement.setString(1, "Mayer"); // (?-INDEX,name)
+			prepStatement.setString(1, "Müller"); // (?-INDEX,name)
 			prepStatement.setInt(2, 3);			//(?-INDEX,id) 
 			prepStatement.executeUpdate();
 			

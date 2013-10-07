@@ -2,6 +2,13 @@ package de.cimdata.data;
 
 public class Workout {
 	
+	private String name;
+	private String duration;
+	private String pulse;
+	private String type;
+	private final static String[] fierce;
+	private final static String[] types; 
+	
 	static {
 		types = new String[4];
 		types[0] = "Laufen";
@@ -16,14 +23,46 @@ public class Workout {
 		fierce[3] = "Erschöpfend bis schmerzhaft";
 		
 	}
-	
-	private String name;
-	private String duration;
-	private String pulse;
-	private String type;
-	private final static String[] fierce;
-	private final static String[] types; 
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public String getPulse() {
+		return pulse;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public static String[] getFierce() {
+		return fierce;
+	}
+
+	public static String[] getTypes() {
+		return types;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+
+	public void setPulse(String pulse) {
+		this.pulse = pulse;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 
-	
 }
