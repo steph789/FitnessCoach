@@ -21,13 +21,13 @@ public class DatenbankAbfragen {
 		
 	}
 	
-	public long findUserID(String name) {
+	public long findUserID(String username) {
 		long id = 0;
 		
 		String query = "SELECT id FROM user WHERE username LIKE ?"; // %?
 		try {
 			PreparedStatement st = con.prepareStatement(query);
-			st.setString(1, name);
+			st.setString(1, username);
 			ResultSet rs = st.executeQuery();
 			id = rs.getLong("id");
 			

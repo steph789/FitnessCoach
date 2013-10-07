@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.Weights" table="weights" catalog="fitness">
+        <id name="weightsId" type="java.lang.Long">
+            <column name="weights_id" />
+            <generator class="identity" />
+        </id>
+        <property name="weight" type="double">
+            <column name="weight" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true" />
+        </property>
+        <property name="userId" type="long">
+            <column name="user_id" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.User" table="user" catalog="fitness">
+        <id name="userId" type="java.lang.Long">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="20" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" not-null="true" />
+        </property>
+        <property name="firstname" type="string">
+            <column name="firstname" length="20" not-null="true" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" not-null="true" />
+        </property>
+        <property name="yearbirth" type="int">
+            <column name="yearbirth" not-null="true" />
+        </property>
+        <property name="sex" type="boolean">
+            <column name="sex" not-null="true" />
+        </property>
+        <property name="height" type="double">
+            <column name="height" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="run" type="java.lang.Integer">
+            <column name="run" />
+        </property>
+        <property name="bike" type="java.lang.Integer">
+            <column name="bike" />
+        </property>
+        <property name="swim" type="java.lang.Integer">
+            <column name="swim" />
+        </property>
+        <property name="pump" type="java.lang.Integer">
+            <column name="pump" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="20" />
+        </property>
+        <property name="fitnesslevel" type="java.lang.Integer">
+            <column name="fitnesslevel" />
+        </property>
+    </class>
+</hibernate-mapping>
