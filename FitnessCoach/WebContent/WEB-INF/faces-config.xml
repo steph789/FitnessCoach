@@ -5,13 +5,6 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<navigation-rule>
-		<display-name>index.xhtml</display-name>
-		<from-view-id>/index.xhtml</from-view-id>
-		<navigation-case>
-			<to-view-id>/profile.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
 		<display-name>profile.xhtml</display-name>
 		<from-view-id>/profile.xhtml</from-view-id>
 		<navigation-case>
@@ -36,6 +29,7 @@
 		<display-name>index.xhtml</display-name>
 		<from-view-id>/index.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>userstate</from-outcome>
 			<to-view-id>/newuser.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -43,6 +37,7 @@
 		<display-name>newuser.xhtml</display-name>
 		<from-view-id>/newuser.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>ja</from-outcome>
 			<to-view-id>/profile.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

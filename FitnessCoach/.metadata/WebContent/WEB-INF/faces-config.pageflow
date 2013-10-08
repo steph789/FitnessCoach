@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13808280020640" configfile="/FitnessCoach/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="86" y="58" id="pf13808281873291" outlinks="pf13808281873302 pf13808281873303" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="newentry.xhtml" x="417" y="144" id="pf13808281873314" inlinks="pf13808281873315" path="/newentry.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="news.xhtml" x="428" y="58" id="pf13808281873316" inlinks="pf13808281873317" path="/news.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="newuser.xhtml" x="78" y="192" id="pf13808281873318" outlinks="pf13808281873319" inlinks="pf13808281873303" path="/newuser.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="profile.xhtml" x="252" y="58" id="pf138082818733110" outlinks="pf13808281873317 pf13808281873315 pf138082818733111 pf138082835010213" inlinks="pf13808281873302 pf13808281873319" path="/profile.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="reporting.xhtml" x="417" y="240" id="pf138082818733112" inlinks="pf138082818733111" path="/reporting.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="weekplaner.xhtml" x="411" y="-7" id="pf138082835010214" inlinks="pf138082835010213" path="/weekplaner.xhtml"/>
-  <links id="pf13808281873302" target="pf138082818733110" source="pf13808281873291"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" name="Profil" id="pf13808280020640" configfile="/FitnessCoach/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="18" y="58" id="pf13808281873291" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13808281873303" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="newentry.xhtml" x="465" y="144" id="pf13808281873314" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13808281873315" path="/newentry.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="news.xhtml" x="476" y="58" id="pf13808281873316" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13808281873317" path="/news.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="newuser.xhtml" x="132" y="58" id="pf13808281873318" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf13808281873319" inlinks="pf13808281873303" path="/newuser.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="profile.xhtml" x="300" y="58" id="pf138082818733110" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf13808281873317 pf13808281873315 pf138082818733111 pf138082835010213" inlinks="pf13808281873319" path="/profile.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="reporting.xhtml" x="465" y="240" id="pf138082818733112" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf138082818733111" path="/reporting.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="weekplaner.xhtml" x="459" y="-7" id="pf138082835010214" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf138082835010213" path="/weekplaner.xhtml"/>
   <links id="pf13808281873317" target="pf13808281873316" source="pf138082818733110"/>
   <links id="pf13808281873315" target="pf13808281873314" source="pf138082818733110"/>
   <links id="pf138082818733111" target="pf138082818733112" source="pf138082818733110"/>
-  <links id="pf13808281873303" target="pf13808281873318" source="pf13808281873291"/>
-  <links id="pf13808281873319" target="pf138082818733110" source="pf13808281873318"/>
+  <links id="pf13808281873303" target="pf13808281873318" source="pf13808281873291" outcome="userstate"/>
+  <links id="pf13808281873319" target="pf138082818733110" source="pf13808281873318" outcome="ja"/>
   <links id="pf138082835010213" target="pf138082835010214" source="pf138082818733110"/>
 </pageflow:Pageflow>

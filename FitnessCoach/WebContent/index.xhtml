@@ -21,14 +21,13 @@
 		<h:outputText value="Bist du neu hier oder hast du bereits einen Account?" /> 
 	
 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
-  
- <!--      	 <p:selectOneRadio id="options" value="#{formBean.number}">  --> >
- 		<p:selectOneRadio id="options">
+
+ 		<p:selectOneRadio id="options" value="#{userBean.userstate}">
            	 <f:selectItem itemLabel="Einloggen" itemValue="1" itemDisabled="false"/>  
            	 <f:selectItem itemLabel="Registrieren" itemValue="2" />  
        	 </p:selectOneRadio>
        	 
-       	 <h:commandButton value="Weiter" action="kundenstatus"/>  
+       	 <h:commandButton value="Weiter" action="userstate"/>  
   
    		 </h:panelGrid>  
    		 

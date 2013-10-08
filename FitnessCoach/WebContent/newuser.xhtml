@@ -17,7 +17,7 @@
 
 	<ui:define name="content">
 
-	<h:form>  
+	<h:form rendered="#{userBean.userstate==1}">  
   
     <p:panel header="Nutzerdaten-Eingabe">  
         <h:panelGrid columns="2" cellpadding="5">
@@ -40,18 +40,35 @@
             <p:inputText value="#{userBean.user.yearbirth}" required="true"/>
             
             <h:outputText value="Geschlecht: " />  
-           		<p:selectOneRadio id="sex">
-           	 		<f:selectItem itemLabel="weiblich" itemValue="true" value="#{userBean.user.sex}" itemDisabled="false" />  
-           	 		<f:selectItem itemLabel="männlich" itemValue="false" value="#{userBean.user.sex}" />  
+           		<p:selectOneRadio id="sex"  value="#{userBean.user.sex}">
+           	 		<f:selectItem itemLabel="weiblich" itemValue="false"/>  
+           	 		<f:selectItem itemLabel="männlich" itemValue="true"/>  
        			</p:selectOneRadio>
             
-            <h:commandButton value="Submit" action="#{userBean.saveNewUser}"/>  
+            <h:commandButton value="Nutzerkonto erstellen" action="#{userBean.saveNewUser}"/>  
   
         </h:panelGrid>  
     </p:panel>  
-      
-         
-</h:form>  
+</h:form> 
+
+
+
+
+<h:form rendered="#{userBean.userstate==2}">  
+                  
+    <p:panel header="LogIn für registrierte Nutzer">  
+        <p:messages autoUpdate="true"/>  
+  
+        <h:panelGrid id="grid" columns="4" cellpadding="5">  
+            <h:outputLabel for="username" value="Username:" style="font-weight:bold"/>                      
+            <p:inputText id="username" value="" required="true" label="Username"/>  
+            <p:message for="username" />  
+        </h:panelGrid>  
+  
+        <h:commandButton value="Einloggen" action="#{userBean.isUserValid}" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/>  
+       
+    </p:panel>  
+</h:form> 
    		 
 </ui:define>
 

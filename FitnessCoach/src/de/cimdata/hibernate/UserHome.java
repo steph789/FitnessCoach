@@ -8,8 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
-import de.cimdata.data.NewUserData;
-
 
 // Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0
 

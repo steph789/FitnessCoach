@@ -7,15 +7,53 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
 	<title>FitnessCoach</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
 
-	<h1>Der ultimative Fitness-Coach</h1>
-	<h2>Projektarbeit in Java III von Stephanie Gerlich</h2>
+<ui:composition template="WEB-INF/template/common/commonLayout.xhtml">
 
 
-</body>
+	<ui:define name="content">
+	   <div id="top">
+			<h:dataTable value="#{userBean.friends}" var="o"
+    			
+    		>
+ 
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Username</f:facet>
+    				<!-- row record -->
+    				#{userBean.user.username}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">Vorname</f:facet>
+    				#{userBean.user.firstname}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">Status</f:facet>
+    				#{userBean.user.status}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">Fitnesslevel</f:facet>
+    				#{userBean.user.fitnesslevel}
+    			</h:column>
+ 
+    		</h:dataTable>
+	   </div>
+	   
+	   <div>
+	
+	   </div>
+	</ui:define>
+
+
+</ui:composition>
+
+</h:body>
 </html>

@@ -1,10 +1,12 @@
 package de.cimdata.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import de.cimdata.hibernate.FriendsHome;
 import de.cimdata.hibernate.User;
 import de.cimdata.hibernate.UserHome;
 
@@ -17,20 +19,21 @@ public class UserBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private User user;
 	private UserHome userhome;
-	private int kundenStatus;
+	private FriendsHome friendshome;
+	private int userstate;
 	private String tempUsername;
 	private String tempPasswort;
+	private List<User> friends;
 	
 	public UserBean() {
+		user = new User();
 		userhome = new UserHome();
+		friendshome = new FriendsHome();
+		//friends = friendshome.findAllFriendsID(user.getUserId());
 	}
 	
 	public User getUser() {
 		return user;
-	}
-
-	public int getKundenStatus() {
-		return kundenStatus;
 	}
 
 	public String getTempUsername() {
@@ -45,10 +48,13 @@ public class UserBean implements Serializable{
 		this.user = user;
 	}
 
-	public void setKundenStatus(int kundenStatus) {
-		this.kundenStatus = kundenStatus;
+	public int getUserstate() {
+		return userstate;
 	}
 
+	public void setUserstate(int userstate) {
+		this.userstate = userstate;
+	}
 
 	public void setTempUsername(String tempUsername) {
 		this.tempUsername = tempUsername;
@@ -59,7 +65,15 @@ public class UserBean implements Serializable{
 		this.tempPasswort = tempPasswort;
 	}
 	
-	public String isKundeValid() {
+	public List<User> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<User> friends) {
+		this.friends = friends;
+	}
+
+	public String isUserValid() {
 		String antwort = "nein";
 		
 		tempUsername = user.getUsername();
@@ -122,4 +136,5 @@ public class UserBean implements Serializable{
 		return "neuer Nutzer";
 	}
 	
+
 }
