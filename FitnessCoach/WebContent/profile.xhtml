@@ -7,19 +7,99 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
 	<title>FitnessCoach</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
 <ui:composition template="WEB-INF/template/common/commonLayout.xhtml">
 
 
 	<ui:define name="content">
-	    Add your header here or delete to use the default
+	   <div id="top">
+	   	<h:panelGrid border="0" columns="3">
+	   		<h:panelGroup>
+	   			<h:outputText value="Hallo"/>
+	   			<h:outputText value="#{userBean.user.firstname}"/>
+	   			<h:outputText value="#{userBean.user.lastname}"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<p:selectOneMenu value="#{userBean.user.status}">  
+            		<f:selectItem itemLabel="spitze" itemValue="spitze" />  
+            		<f:selectItem itemLabel="glücklich" itemValue="glücklich" />  
+            		<f:selectItem itemLabel="aufgeregt" itemValue="aufgeregt" />  
+            		<f:selectItem itemLabel="hochmotiviert" itemValue="hochmotiviert" /> 
+            		<f:selectItem itemLabel="passabel" itemValue="passabel" />
+            		<f:selectItem itemLabel="beinahe gut" itemValue="beinahe gut" />
+            		<f:selectItem itemLabel="nicht so toll" itemValue="nicht so toll" />
+            		<f:selectItem itemLabel="müde" itemValue="müde" />
+            		<f:selectItem itemLabel="am Boden zerstört" itemValue="am Boden zerstört" />
+            		<f:selectItem itemLabel="enttäuscht" itemValue="enttäuscht" />
+       			 </p:selectOneMenu>
+       			  <p:rating value="#{userBean.user.fitnesslevel}" stars="5" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 5')"/>
+	   		</h:panelGroup>
+	   	</h:panelGrid>
+	   </div>
+	   
+	   <div id="editprofile">
+	   <p:panel id="panel" header="Nutzerdaten ändern" style="margin-bottom:10px;">
+	   	<h:panelGrid border="0" columns="3">
+	   		<h:panelGroup>
+	   			<h:outputText value="Vorname:"/>
+	   			<p:inputText value="#{userBean.user.firstname}"/>
+	   			<h:commandButton action="#{userBean.changeFirstname}" value="Vorname ändern" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="Nachname:"/>
+	   			<p:inputText value="#{userBean.user.lastname}"/>
+	   			<h:commandButton action="#{userBean.changeLastname}" value="Nachname ändern" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="E-Mail:"/>
+	   			<p:inputText value="#{userBean.user.email}"/>
+	   			<h:commandButton action="#{userBean.changeEmail}" value="E-Mail ändern" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="Laufen find ich:"/>
+	   			<p:selectOneRadio id="run">
+           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+       			 </p:selectOneRadio>
+	   			<h:commandButton action="#{userBean.changeRun}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="Radfahren find ich:"/>
+	   			<p:selectOneRadio id="bike">
+           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+       			 </p:selectOneRadio>
+	   			<h:commandButton action="#{userBean.changeBike}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup></h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="Schwimmen find ich:"/>
+	   			<p:selectOneRadio id="swim">
+           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+       			 </p:selectOneRadio>
+	   			<h:commandButton action="#{userBean.changeSwim}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup>
+	   			<h:outputText value="BodyPump find ich:"/>
+	   			<p:selectOneRadio id="pump">
+           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+       			 </p:selectOneRadio>
+	   			<h:commandButton action="#{userBean.changePump}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   		</h:panelGroup>
+	   		<h:panelGroup></h:panelGroup>
+	   	</h:panelGrid>
+	   
+	   	</p:panel>
+	   </div>
 	</ui:define>
 
 
 </ui:composition>
-</body>
+</h:body>
 </html>

@@ -10,23 +10,26 @@ h2 { font-family: 'Muli', sans-serif;
 
 p {font-family: 'Gentium Book Basic', serif;}
 
-html, body {height: 100%;
-            width: 800px;
-            margin: 0 auto;}
+html, body {
+	height: 100%;
+    width: 800px;
+    margin: 0 auto;
+}
 
 #wrapper {
-  background: white;
-  color: black;
-  width: 1200px;
-  margin: 10px auto;
+	background: #EFECCA;
+	color: #002F2F;
+	width: 1200px;
+	margin: 10px auto;
 }
  
 #nav {
-  background-color: #EFECCA;
-  float: left;
-  width: 110px;
-  padding-left: 20px;
-  padding-top: 20px;
+	font-family: 'Gentium Book Basic', serif;
+	background-color: #EFECCA;
+	float: left;
+	width: 120px;
+	padding-left: 20px;
+	padding-top: 20px;
 }
  
 #nav a {
@@ -35,30 +38,47 @@ html, body {height: 100%;
     color: black;
     background-color: #EFECCA;
     padding: 4px;
-    border-left: 3px solid #002F2F;
 }
  
 #nav a:hover,
 #nav a:focus {
-    color: black;
-    background-color: white;
-    border-left-color: #002F2F;
-    border-bottom: none;
+	color: #002F2F;
+	background-color: white;
+	border-bottom: none;
 }
 #nav a:active {
-    color: black;
+    color: #002F2F;
     background-color: #EFECCA;
 }  
    
 #header {
-  position: relative;
-  background: #EFECCA;
-  color: black;
-  padding: 10px 20px 10px 20px;
+	position: relative;
+	background: #EFECCA;
+	color: #002F2F;
+	padding: 10px 20px 10px 20px;
+	border-bottom:1px solid #002F2F;
 }
  
 #content {
     padding: 50px 50px 50px 50px;
     padding-left: 160px;
     background-color: #EFECCA;
+}
+
+#top {
+	background-color: #EFECCA;
+	color: #002F2F;
+	float: left;
+	min-width: 600px;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+#editprofile {
+	background-color: #EFECCA;
+	color: #002F2F;
+	float: left;
+	min-width: 600px;
+	padding-left: 20px;
+	padding-top: 20px;
 }

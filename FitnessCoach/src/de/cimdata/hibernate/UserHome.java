@@ -1,4 +1,4 @@
-package hibernate;
+package de.cimdata.hibernate;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import de.cimdata.data.NewUserData;
 
 /**
  * Home object for domain model class User.
- * @see hibernate.User
+ * @see de.cimdata.hibernate.User
  * @author Hibernate Tools
  */
 public class UserHome {
@@ -35,7 +35,7 @@ public class UserHome {
 	}
 	
 	
-	public List<User> findUserByUsernameAndPassword(String username, String password) {
+	public User findUserByUsernameAndPassword(String username, String password) {
 		Session session = hbn.currentSession();
 		Criteria criteria = session.createCriteria(User.class);
 		
@@ -46,7 +46,29 @@ public class UserHome {
 		Example example = Example.create(tmpUser);
 		criteria.add(example);
 		
-		return criteria.list();
+		return (User) criteria.list();
+	}
+	
+	public void updateFirstname(long id, String newFirstname) {
+		Session session = hbn.currentSession();
+		Transaction t = session.beginTransaction();
+		
+		User user = (User) session.get(User.class, id);
+		user.setFirstname(newFirstname);
+		
+		session.update(user);
+		t.commit();
+	}
+	
+	public void updateLastname(long id, String newLastname) {
+		Session session = hbn.currentSession();
+		Transaction t = session.beginTransaction();
+		
+		User user = (User) session.get(User.class, id);
+		user.setLastname(newLastname);
+		
+		session.update(user);
+		t.commit();
 	}
 	
 	public void updateEmail(long id, String newEmail) {
@@ -151,5 +173,7 @@ public class UserHome {
 		uh.attachUser(newuser);
 	
 	}
+
+
 
 }

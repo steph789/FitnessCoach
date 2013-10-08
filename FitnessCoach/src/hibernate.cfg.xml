@@ -19,9 +19,9 @@
         
         
         <!-- Mapping -->
-        <mapping resource="hibernate/User.hbm.xml"/>
-        <mapping resource="hibernate/Weights.hbm.xml"/>
-        <mapping resource="hibernate/Friends.hbm.xml"/>
+        <mapping resource="de/cimdata/hibernate/User.hbm.xml"/>
+        <mapping resource="de/cimdata/hibernate/Weights.hbm.xml"/>
+        <mapping resource="de/cimdata/hibernate/Friends.hbm.xml"/>
         
         
      

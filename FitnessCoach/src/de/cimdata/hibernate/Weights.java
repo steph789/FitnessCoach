@@ -1,4 +1,4 @@
-package hibernate;
+package de.cimdata.hibernate;
 
 // Generated 07.10.2013 11:17:36 by Hibernate Tools 4.0.0
 

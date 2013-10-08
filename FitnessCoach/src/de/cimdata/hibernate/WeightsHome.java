@@ -1,4 +1,4 @@
-package hibernate;
+package de.cimdata.hibernate;
 
 import java.util.Date;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.hibernate.criterion.Restrictions;
 
 /**
  * Home object for domain model class Weights.
- * @see hibernate.Weights
+ * @see de.cimdata.hibernate.Weights
  * @author Hibernate Tools
  */
 public class WeightsHome {

@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="hibernate.Friends" table="friends" catalog="fitness">
+    <class name="de.cimdata.hibernate.Friends" table="friends" catalog="fitness">
         <id name="friendshipId" type="java.lang.Long">
             <column name="friendship_id" />
             <generator class="identity" />

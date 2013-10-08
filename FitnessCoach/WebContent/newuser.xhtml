@@ -7,11 +7,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
 	<title>FitnessCoach</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
 
 	<ui:composition template="WEB-INF/template/common/commonLayout2.xhtml">
 
@@ -19,60 +19,38 @@
 
 	<h:form>  
   
-    <p:panel header="Masks">  
-        <h:panelGrid columns="2" cellpadding="5">  
+    <p:panel header="Nutzerdaten-Eingabe">  
+        <h:panelGrid columns="2" cellpadding="5">
         	<h:outputText value="Username: " />  
-            <p:inputText value="#{}" required="true"/> 
+            <p:inputText value="#{userBean.user.username}" required="true"/> 
         	
         	<h:outputText value="Passwort: " /> 
-            <p:password id="pwd" value="#{}" required="true"/> 
+            <p:password id="pwd" value="#{userBean.user.password}" required="true"/> 
         	
         	<h:outputText value="Vorname: " />  
-            <p:inputText value="#{}" required="true"/>
+            <p:inputText value="#{userBean.user.firstname}" required="true"/>
             
             <h:outputText value="Nachname: " />  
-            <p:inputText value="#{}" required="true"/>
+            <p:inputText value="#{userBean.user.lastname}" required="true"/>
             
             <h:outputText value="E-Mail: " />  
-            <p:inputText value="#{}" required="true"/>
+            <p:inputText value="#{userBean.user.email}" required="true"/>
             
             <h:outputText value="Geburtsjahr: " />  
-            <p:inputText value="#{}" required="true"/>
+            <p:inputText value="#{userBean.user.yearbirth}" required="true"/>
             
             <h:outputText value="Geschlecht: " />  
-            <p:inputText value="#{}" required="true"/>
+           		<p:selectOneRadio id="sex">
+           	 		<f:selectItem itemLabel="weiblich" itemValue="true" value="#{userBean.user.sex}" itemDisabled="false" />  
+           	 		<f:selectItem itemLabel="männlich" itemValue="false" value="#{userBean.user.sex}" />  
+       			</p:selectOneRadio>
             
-           
-            <p:commandButton value="Reset" type="reset" />  
-            <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()"/>  
+            <h:commandButton value="Submit" action="#{userBean.saveNewUser}"/>  
   
         </h:panelGrid>  
     </p:panel>  
       
-    <p:dialog widgetVar="dlg" modal="true">  
-        <h:panelGrid id="display" columns="2" cellpadding="5">  
-      
-            <h:outputText value="Date: " />  
-            <h:outputText value="#{maskController.date}" />  
-              
-            <h:outputText value="Phone: " />  
-            <h:outputText value="#{maskController.phone}" />  
-              
-            <h:outputText value="Phone with Ext: " />  
-            <h:outputText value="#{maskController.phoneExt}"/>  
-              
-            <h:outputText value="taxId: " />  
-            <h:outputText value="#{maskController.taxId}" />  
-              
-            <h:outputText value="SSN: " />  
-            <h:outputText value="#{maskController.ssn}" />  
-              
-            <h:outputText value="Product Key: " />  
-            <h:outputText value="#{maskController.productKey}" />  
-      
-        </h:panelGrid>  
-    </p:dialog>  
-      
+         
 </h:form>  
    		 
 </ui:define>
@@ -80,5 +58,5 @@
 
 </ui:composition>
 	
-</body>
+</h:body>
 </html>

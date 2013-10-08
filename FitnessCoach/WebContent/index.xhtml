@@ -22,11 +22,13 @@
 	
 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">  
   
-      	 <h:outputText value="Options: " />   
-      	 <p:selectOneRadio id="options" value="#{formBean.number}">  
-           	 <f:selectItem itemLabel="Einloggen" itemValue="1" />  
+ <!--      	 <p:selectOneRadio id="options" value="#{formBean.number}">  --> >
+ 		<p:selectOneRadio id="options">
+           	 <f:selectItem itemLabel="Einloggen" itemValue="1" itemDisabled="false"/>  
            	 <f:selectItem itemLabel="Registrieren" itemValue="2" />  
-       	 </p:selectOneRadio>  
+       	 </p:selectOneRadio>
+       	 
+       	 <h:commandButton value="Weiter" action="kundenstatus"/>  
   
    		 </h:panelGrid>  
    		 

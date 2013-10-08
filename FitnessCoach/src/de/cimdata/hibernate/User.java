@@ -1,4 +1,9 @@
-package hibernate;
+package de.cimdata.hibernate;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.RateEvent;
 
 // Generated 07.10.2013 11:17:36 by Hibernate Tools 4.0.0
 
@@ -58,6 +63,12 @@ public class User implements java.io.Serializable {
 		this.status = status;
 		this.fitnesslevel = fitnesslevel;
 	}
+	
+	public void onrate(RateEvent rateEvent) {  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "Dein Fitnesslevel: " + ((Integer) rateEvent.getRating()).intValue());  
+  
+        FacesContext.getCurrentInstance().addMessage(null, message);  
+    }
 
 	public Long getUserId() {
 		return this.userId;
