@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 
 // Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0
@@ -37,14 +38,21 @@ public class UserHome {
 		Session session = hbn.currentSession();
 		Criteria criteria = session.createCriteria(User.class);
 		
-		User tmpUser = new User();
-		tmpUser.setUsername(username);
-		tmpUser.setPassword(password);
+//		User tmpUser = new User();
+//		tmpUser.setUsername(username);
+//		tmpUser.setPassword(password);
+		System.out.println(username+":"+password);
 		
-		Example example = Example.create(tmpUser);
-		criteria.add(example);
+	//	Example example = Example.create(tmpUser);
+		criteria.add(Restrictions.eq("username", username));
+		criteria.add(Restrictions.eq("password", password));
 		
-		return (User) criteria.list();
+		if(criteria.list().size()>0){
+			User u = (User) criteria.list().get(0);
+			System.out.println("UserHome:User-> "+u);
+			return u;
+		}
+		return null;
 	}
 	
 	public void updateFirstname(long id, String newFirstname) {

@@ -15,6 +15,7 @@
 		<display-name>profile.xhtml</display-name>
 		<from-view-id>/profile.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>newentry</from-outcome>
 			<to-view-id>/newentry.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -22,6 +23,7 @@
 		<display-name>profile.xhtml</display-name>
 		<from-view-id>/profile.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>reporting</from-outcome>
 			<to-view-id>/reporting.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -45,7 +47,16 @@
 		<display-name>profile.xhtml</display-name>
 		<from-view-id>/profile.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>planer</from-outcome>
 			<to-view-id>/weekplaner.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>profile.xhtml</display-name>
+		<from-view-id>/profile.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>friends</from-outcome>
+			<to-view-id>/friends.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

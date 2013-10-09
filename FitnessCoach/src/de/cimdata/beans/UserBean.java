@@ -20,9 +20,10 @@ public class UserBean implements Serializable{
 	private User user;
 	private UserHome userhome;
 	private FriendsHome friendshome;
-	private int userstate;
+	private int userstate = 2;
 	private String tempUsername;
 	private String tempPasswort;
+	private boolean loggedin;
 	private List<User> friends;
 	
 	public UserBean() {
@@ -76,14 +77,19 @@ public class UserBean implements Serializable{
 	public String isUserValid() {
 		String antwort = "nein";
 		
-		tempUsername = user.getUsername();
-		tempPasswort = user.getPassword();
+
 		
 		user = userhome.findUserByUsernameAndPassword(tempUsername, tempPasswort);
 		
+		System.out.println("UserBean: User->"+user);
+		
 		if(user != null) {
 			antwort = "ja";
+			this.loggedin = true;
+			
 		}
+		System.out.println(loggedin);
+		
 		return antwort;
 	}
 
@@ -133,7 +139,7 @@ public class UserBean implements Serializable{
 	
 	public String saveNewUser() {
 		userhome.attachUser(user);
-		return "neuer Nutzer";
+		return "ja";
 	}
 	
 

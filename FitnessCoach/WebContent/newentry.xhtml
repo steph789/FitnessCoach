@@ -12,11 +12,37 @@
 </head>
 
 <body>
-<ui:composition template="WEB-INF/template/common/commonLayout.xhtml">
+<ui:composition template="template/common/commonLayout.xhtml">
 
 
 	<ui:define name="content">
-	    Add your header here or delete to use the default
+		<h2>Wähle ein Datum aus und gebe das zugehörige Gewicht ein:</h2>
+	<h:form>
+	   
+	    <p:calendar value="#{weightsBean.weights.date}" mode="inline" id="inlineCal"/>
+	    
+	     <h:outputLabel for="weight" value="Gewicht:" style="font-weight:bold"/>                      
+         <p:inputText id="weight" value="#{weightsBean.weights.weight}" required="true" label="Gewicht"/>
+	    
+	    <p:commandButton value="Gewicht eintragen" update="display" oncomplete="PF('dialog').show()" />
+	    
+	     <p:dialog header="Neuer Eintrag" widgetVar="dialog"   
+            showEffect="fade" hideEffect="fade">  
+      
+        	<h:panelGrid id="display" columns="2" cellpadding="5">  
+          
+            	<h:outputText value="Datum: " />  
+            	<h:outputText value="#{weightsBean.weights.date}" id="inlineDate">  
+                	<f:convertDateTime pattern="dd/MM/yyyy"/>  
+            	</h:outputText>
+            	
+            	<h:outputText value="Gewicht: " />  
+            	<h:outputText value="#{weightsBean.weights.weight}" />  
+
+        	</h:panelGrid>  
+    	</p:dialog>
+    	
+	</h:form>   
 	</ui:define>
 
 

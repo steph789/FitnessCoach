@@ -12,7 +12,7 @@
 </h:head>
 
 <h:body>
-<ui:composition template="WEB-INF/template/common/commonLayout.xhtml">
+<ui:composition template="template/common/commonLayout.xhtml">
 
 
 	<ui:define name="content">
@@ -36,26 +36,28 @@
             		<f:selectItem itemLabel="am Boden zerstört" itemValue="am Boden zerstört" />
             		<f:selectItem itemLabel="enttäuscht" itemValue="enttäuscht" />
        			 </p:selectOneMenu>
-       			  <p:rating value="#{userBean.user.fitnesslevel}" stars="5" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 5')"/>
+       			  <p:rating value="#{userBean.user.fitnesslevel}" stars="7" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 7')"/>
 	   		</h:panelGroup>
 	   	</h:panelGrid>
 	   </div>
 	   
 	   <div id="editprofile">
+	   
+	   <h:form>
 	   <p:panel id="panel" header="Nutzerdaten ändern" style="margin-bottom:10px;">
 	   	<h:panelGrid border="0" columns="3">
 	   		<h:panelGroup>
-	   			<h:outputText value="Vorname:"/>
+	   			<h:outputText value="Vorname:"/><br/>
 	   			<p:inputText value="#{userBean.user.firstname}"/>
 	   			<h:commandButton action="#{userBean.changeFirstname}" value="Vorname ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
-	   			<h:outputText value="Nachname:"/>
+	   			<h:outputText value="Nachname:"/><br/>
 	   			<p:inputText value="#{userBean.user.lastname}"/>
 	   			<h:commandButton action="#{userBean.changeLastname}" value="Nachname ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
-	   			<h:outputText value="E-Mail:"/>
+	   			<h:outputText value="E-Mail:"/><br/>
 	   			<p:inputText value="#{userBean.user.email}"/>
 	   			<h:commandButton action="#{userBean.changeEmail}" value="E-Mail ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
@@ -96,6 +98,7 @@
 	   	</h:panelGrid>
 	   
 	   	</p:panel>
+	   	</h:form>
 	   </div>
 	</ui:define>
 

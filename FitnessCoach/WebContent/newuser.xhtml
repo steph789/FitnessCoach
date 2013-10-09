@@ -13,11 +13,11 @@
 
 <h:body>
 
-	<ui:composition template="WEB-INF/template/common/commonLayout2.xhtml">
+	<ui:composition template="template/common/commonLayout2.xhtml">
 
 	<ui:define name="content">
 
-	<h:form rendered="#{userBean.userstate==1}">  
+	<h:form rendered="#{userBean.userstate==2}">  
   
     <p:panel header="Nutzerdaten-Eingabe">  
         <h:panelGrid columns="2" cellpadding="5">
@@ -39,13 +39,16 @@
             <h:outputText value="Geburtsjahr: " />  
             <p:inputText value="#{userBean.user.yearbirth}" required="true"/>
             
+            <h:outputText value="Größe: " />  
+            <p:inputText value="#{userBean.user.height}" required="true"/>
+            
             <h:outputText value="Geschlecht: " />  
            		<p:selectOneRadio id="sex"  value="#{userBean.user.sex}">
            	 		<f:selectItem itemLabel="weiblich" itemValue="false"/>  
            	 		<f:selectItem itemLabel="männlich" itemValue="true"/>  
        			</p:selectOneRadio>
             
-            <h:commandButton value="Nutzerkonto erstellen" action="#{userBean.saveNewUser}"/>  
+            <p:commandButton value="Nutzerkonto erstellen" action="#{userBean.saveNewUser}"/>  
   
         </h:panelGrid>  
     </p:panel>  
@@ -54,22 +57,25 @@
 
 
 
-<h:form rendered="#{userBean.userstate==2}">  
+<h:form rendered="#{userBean.userstate==1}">  
                   
     <p:panel header="LogIn für registrierte Nutzer">  
         <p:messages autoUpdate="true"/>  
   
-        <h:panelGrid id="grid" columns="4" cellpadding="5">  
+        <h:panelGrid id="grid" columns="3" cellpadding="5">  
             <h:outputLabel for="username" value="Username:" style="font-weight:bold"/>                      
-            <p:inputText id="username" value="" required="true" label="Username"/>  
-            <p:message for="username" />  
+            <p:inputText id="username" value="#{userBean.tempUsername}" required="true" label="Username"/>  
+            <p:message for="username" />
+            <h:outputLabel for="password" value="Passwort:" style="font-weight:bold"/> 
+            <p:password id="password" value="#{userBean.tempPasswort}" />
+            <p:message for="password" /> 
         </h:panelGrid>  
   
-        <h:commandButton value="Einloggen" action="#{userBean.isUserValid}" icon="ui-icon-check" validateClient="true" style="margin-right:10px"/>  
+        <p:commandButton value="Einloggen" action="#{userBean.isUserValid}" validateClient="true" style="margin-right:10px"/>  
        
     </p:panel>  
 </h:form> 
-   		 
+   	<h:messages/>
 </ui:define>
 
 

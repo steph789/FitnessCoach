@@ -23,6 +23,10 @@ public class Weights implements java.io.Serializable {
 		this.userId = userId;
 	}
 
+	public Weights(Long userId) {
+		this.userId = userId;
+	}
+
 	public Long getWeightsId() {
 		return this.weightsId;
 	}
