@@ -13,44 +13,50 @@
 
 <h:body>
 
-<ui:composition template="template/common/commonLayout.xhtml">
-
+<ui:composition template="/template/common/commonLayout.xhtml">
 
 	<ui:define name="content">
 	   <div id="top">
-			<h:dataTable value="#{userBean.friends}" var="o"
-    			
-    		>
+	   <h2>Deine Freunde</h2>
+			<p:dataTable id="table" var="usr" value="#{userBean.friendList}" rowStyleClass="#{(rowIndex mod 2) eq 0 ? 'highlight1' : 'highlight2'}">
  
-    			<h:column>
-    				<!-- column header -->
-    				<f:facet name="header">Username</f:facet>
-    				<!-- row record -->
-    				#{userBean.user.username}
-    			</h:column>
+    			<p:column>  
+            		<f:facet name="header">Username</f:facet>  
+            		<h:outputText value="#{usr.username}" />  
+        		</p:column>
+        		
+        		<p:column>  
+            		<f:facet name="header">Vorname</f:facet>  
+            		<h:outputText value="#{usr.firstname}" />  
+        		</p:column>
+        		
+        		<p:column>  
+            		<f:facet name="header">Status</f:facet>  
+            		<h:outputText value="#{usr.status}" />  
+        		</p:column>
+        		
+        		<p:column>  
+            		<f:facet name="header">Fitnesslevel</f:facet>  
+            		<h:outputText value="#{usr.fitnesslevel}" />  
+        		</p:column>
  
-    			<h:column>
-    				<f:facet name="header">Vorname</f:facet>
-    				#{userBean.user.firstname}
-    			</h:column>
- 
-    			<h:column>
-    				<f:facet name="header">Status</f:facet>
-    				#{userBean.user.status}
-    			</h:column>
- 
-    			<h:column>
-    				<f:facet name="header">Fitnesslevel</f:facet>
-    				#{userBean.user.fitnesslevel}
-    			</h:column>
- 
-    		</h:dataTable>
+    		</p:dataTable>
 	   </div>
 	   
 	   <div>
+	   <h2>Neue Freunde finden</h2>
+	   
+	   		<p:selectOneMenu value="#{userBean.}">  
+            	<f:selectItem itemLabel="#{userBean.selectItems}" itemValue="#{userBean.selectItems}" />  
+            	
+        	</p:selectOneMenu>
+	   		
 	
 	   </div>
 	</ui:define>
+
+
+
 
 
 </ui:composition>

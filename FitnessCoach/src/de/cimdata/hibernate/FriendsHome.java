@@ -1,5 +1,6 @@
 package de.cimdata.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -23,7 +24,7 @@ public class FriendsHome {
 	}
 
 	public List<User> findAllFriendsID(long userid) {
-		List<User> friends = null;
+		List<User> friends = new ArrayList<>();
 		List<Long> idList = null;
 
 		Query q = null;
@@ -32,12 +33,14 @@ public class FriendsHome {
 //		q = session
 //				.createQuery("select User u, Friends f where f.friend_id=u.user_id and f.user_id= :userid");
 		
-		q = session.createQuery("select f.friendsID from Friends f where f.userID= :userid");
+		q = session.createQuery("select f.friendId from Friends f where f.userId= :userid");
 		q.setLong("userid", userid);
 		idList = q.list();
+		System.out.println("Anzahl in Liste: " + idList.size());
 		
 		for (Long fid : idList) {
 			User u = (User) session.load(User.class, fid);
+			System.out.println("Freund gefunden: " + u.getUsername());
 			friends.add(u);
 		}
 
@@ -46,7 +49,7 @@ public class FriendsHome {
 
 	public List<User> findAllUserNotFriends(long userid) {
 		List<User> friends = this.findAllFriendsID(userid);
-		List<User> users = null;
+		List<User> users = new ArrayList<>();
 		
 		Query q = null;
 		Session session = hbn.currentSession();
@@ -68,7 +71,16 @@ public class FriendsHome {
 		Session session = hbn.currentSession();
 		Transaction t = session.beginTransaction();
 		
+		//1. Eintrag eingeloggter User = user_id, der andere ist Freund
 		session.saveOrUpdate(friends);
+		
+		//2. Eintrag User und Freund tauschen Plätze
+		long temp = 0;
+		temp = friends.getUserId();
+		friends.setUserId(friends.getFriendId());
+		friends.setFriendId(temp);
+		session.saveOrUpdate(friends);
+		
 		t.commit();
 	}
 

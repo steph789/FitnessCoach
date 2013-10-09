@@ -139,3 +139,11 @@ html, body {
 	padding-left: 20px;
 	padding-top: 20px;
 }
+
+.highlight1 {
+    background: #d1a575  !important ;
+}
+
+.highlight2 {
+    background: #FEEEBD  !important ;
+}
