@@ -1,13 +1,10 @@
 package de.cimdata.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 
 import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.LineChartSeries;
@@ -23,10 +20,12 @@ public class WeightsBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Weights weights;
+	private Weights selectedWeight = new Weights();
 	private WeightsHome weightshome;
 	private List<Weights> listAllWeights;
 	private CartesianChartModel linearModel;
 	private UserBean userBean;
+	private Long weightId;
 
 
 
@@ -43,6 +42,12 @@ public class WeightsBean implements Serializable{
 		return "reporting";
 	}
 	
+	public String removeEntry()	{
+		weightId = weights.getWeightsId();
+		weightshome.deleteWeight(weightId);
+		System.out.println("+++++++++++++++++++++++++++ remove entry");
+		return "newentry";
+	}
 
 	private void createLinearModel() {  
         linearModel = new CartesianChartModel();  
@@ -93,4 +98,21 @@ public class WeightsBean implements Serializable{
 		this.listAllWeights = listAllWeights;
 	}
 
+	public Weights getSelectedWeight() {
+		return selectedWeight;
+	}
+
+	public void setSelectedWeight(Weights selectedWeight) {
+		this.selectedWeight = selectedWeight;
+	}
+
+	public Long getWeightId() {
+		return weightId;
+	}
+
+	public void setWeightId(Long weightId) {
+		this.weightId = weightId;
+	}
+	
+	
 }

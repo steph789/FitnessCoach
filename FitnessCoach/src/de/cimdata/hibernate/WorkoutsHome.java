@@ -18,7 +18,7 @@ public class WorkoutsHome implements Serializable{
 	public List<Workouts> findAllWorkouts() {
 		Session session = hbn.currentSession();
 		Query q = null;
-		q = session.createQuery("form Workouts");
+		q = session.createQuery("from Workouts");
 				
 		return q.list();
 	}

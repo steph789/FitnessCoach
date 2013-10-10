@@ -18,7 +18,9 @@
 
 	   <div id="top">
 	   <h2>Auswertung</h2>
-			<p:dataTable id="table" var="wg" value="#{weightsBean.listAllWeights}" rowStyleClass="#{(rowIndex mod 2) eq 0 ? 'highlight1' : 'highlight2'}">
+			<p:dataTable id="table" var="wg" value="#{weightsBean.listAllWeights}" rowKey="#{wg.date}"
+						rowStyleClass="#{(rowIndex mod 2) eq 0 ? 'highlight1' : 'highlight2'}"
+						selection="#{weightsBean.weights.weightsId}" selectionMode="single">
  
     			<p:column>  
             		<f:facet name="header">Datum</f:facet>  
@@ -29,16 +31,24 @@
             		<f:facet name="header">Gewicht in kg</f:facet>  
             		<h:outputText value="#{wg.weight}" />  
         		</p:column>
+        		
+        		<f:facet name="footer">  
+            		<p:commandButton id="delete" value="Eintrag löschen" action="#{weightsBean.removeEntry}"/>  
+        		</f:facet>
  
     		</p:dataTable>
+    		
+    		
+        
 	   </div>
 	   
 	   <div id="middle">
+	   <h2>Tabelle Gewichtsentwicklung</h2>
 	   
-	   	<p:lineChart id="linear" value="#{weightsBean.linearModel}" var="wgt"
-	   				legendPosition="e" title="Gewichtsentwicklung" minY="50" maxY="150" style="height:400px">
+	   		<p:lineChart id="linear" value="#{weightsBean.linearModel}" var="wgt"
+	   				legendPosition="e" minY="50" maxY="150" style="height:400px">
 	   				
-	   </p:lineChart> 
+	   		</p:lineChart> 
 	   
 	   
 	   </div>

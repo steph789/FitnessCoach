@@ -61,5 +61,13 @@
 			<to-view-id>/reporting.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>reporting.xhtml</display-name>
+		<from-view-id>/reporting.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>newentry.xhtml</from-outcome>
+			<to-view-id>/newentry.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

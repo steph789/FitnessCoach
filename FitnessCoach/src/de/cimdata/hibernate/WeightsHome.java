@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 // Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0
 
@@ -54,12 +52,23 @@ public class WeightsHome implements Serializable{
 	}
 	
 	public void attachWeight(Weights weight) {
-		
 		Session session = hbn.currentSession();
 		Transaction t = session.beginTransaction();
 		
 		session.save(weight);
 		System.out.println("Gewicht eingetragen: " + weight.getWeight());
+		t.commit();
+	}
+	
+	public void deleteWeight(Long wid) {
+		//Long id = weights.getWeightsId();
+		Session session = hbn.currentSession();
+		Transaction t = session.beginTransaction();
+		Query q = null;
+		q = session.createQuery("delete from Weights w where w.weightsId= :id");
+		q.setLong("id", wid);
+		System.out.println(":::::::::::::::::::::::::::::::::::::::Eintrag wird gelöscht: " + wid);
+		
 		t.commit();
 	}
 	
