@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class Weights implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Long weightsId;
 	private double weight;
 	private Date date;

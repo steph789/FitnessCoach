@@ -17,14 +17,16 @@
 
 	<ui:define name="content">
 	   <div id="top">
-	   	<h:panelGrid border="0" columns="3">
+	   	<h:panelGrid border="0" columns="3" cellpadding="30">
 	   		<h:panelGroup>
-	   			<h:outputText value="Hallo"/>
-	   			<h:outputText value="#{userBean.user.firstname}"/>
+	   			<h1><h:outputText value="Hallo"/><br/>
+	   			<h:outputText value="#{userBean.user.firstname}"/><br/>
 	   			<h:outputText value="#{userBean.user.lastname}"/>
+	   			</h1>
 	   		</h:panelGroup>
+	   		<h:form>
 	   		<h:panelGroup>
-	   			<p:selectOneMenu value="#{userBean.user.status}">  
+	   			<p:selectOneMenu value="#{userBean.user.status}" >  
             		<f:selectItem itemLabel="spitze" itemValue="spitze" />  
             		<f:selectItem itemLabel="glücklich" itemValue="glücklich" />  
             		<f:selectItem itemLabel="aufgeregt" itemValue="aufgeregt" />  
@@ -35,9 +37,13 @@
             		<f:selectItem itemLabel="müde" itemValue="müde" />
             		<f:selectItem itemLabel="am Boden zerstört" itemValue="am Boden zerstört" />
             		<f:selectItem itemLabel="enttäuscht" itemValue="enttäuscht" />
+            		<p:ajax listener="#{userBean.changeStatus()}"/>
        			 </p:selectOneMenu>
-       			  <p:rating value="#{userBean.user.fitnesslevel}" stars="7" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 7')"/>
+       			 <p:rating id="rating" value="#{userBean.user.fitnesslevel}" stars="7" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 7')">
+       				 <p:ajax listener="#{userBean.changeFitnesslevel()}"/>
+       			 </p:rating>
 	   		</h:panelGroup>
+	   		</h:form>
 	   	</h:panelGrid>
 	   </div>
 	   
@@ -45,54 +51,54 @@
 	   
 	   <h:form>
 	   <p:panel id="panel" header="Nutzerdaten ändern" style="margin-bottom:10px;">
-	   	<h:panelGrid border="0" columns="3">
+	   	<h:panelGrid border="0" columns="3" cellpadding="30">
 	   		<h:panelGroup>
 	   			<h:outputText value="Vorname:"/><br/>
 	   			<p:inputText value="#{userBean.user.firstname}"/>
-	   			<h:commandButton action="#{userBean.changeFirstname}" value="Vorname ändern" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeFirstname}" value="Vorname ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="Nachname:"/><br/>
 	   			<p:inputText value="#{userBean.user.lastname}"/>
-	   			<h:commandButton action="#{userBean.changeLastname}" value="Nachname ändern" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeLastname}" value="Nachname ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="E-Mail:"/><br/>
 	   			<p:inputText value="#{userBean.user.email}"/>
-	   			<h:commandButton action="#{userBean.changeEmail}" value="E-Mail ändern" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeEmail}" value="E-Mail ändern" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="Laufen find ich:"/>
-	   			<p:selectOneRadio id="run">
-           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
-           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+	   			<p:selectOneRadio id="run" value="#{userBean.user.run}">
+           	 		<f:selectItem itemLabel=" super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel=" nicht so toll" itemValue="0" />  
        			 </p:selectOneRadio>
-	   			<h:commandButton action="#{userBean.changeRun}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeRun}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="Radfahren find ich:"/>
-	   			<p:selectOneRadio id="bike">
-           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
-           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+	   			<p:selectOneRadio id="bike" value="#{userBean.user.bike}">
+           	 		<f:selectItem itemLabel=" super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel=" nicht so toll" itemValue="0" />  
        			 </p:selectOneRadio>
-	   			<h:commandButton action="#{userBean.changeBike}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeBike}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup></h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="Schwimmen find ich:"/>
-	   			<p:selectOneRadio id="swim">
-           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
-           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+	   			<p:selectOneRadio id="swim" value="#{userBean.user.swim}">
+           	 		<f:selectItem itemLabel=" super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel=" nicht so toll" itemValue="0" />  
        			 </p:selectOneRadio>
-	   			<h:commandButton action="#{userBean.changeSwim}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changeSwim}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup>
 	   			<h:outputText value="BodyPump find ich:"/>
-	   			<p:selectOneRadio id="pump">
-           	 		<f:selectItem itemLabel="super" itemValue="1" itemDisabled="false"/>  
-           	 		<f:selectItem itemLabel="nicht so toll" itemValue="0" />  
+	   			<p:selectOneRadio id="pump" value="#{userBean.user.pump}">
+           	 		<f:selectItem itemLabel=" super" itemValue="1" itemDisabled="false"/>  
+           	 		<f:selectItem itemLabel=" nicht so toll" itemValue="0" />  
        			 </p:selectOneRadio>
-	   			<h:commandButton action="#{userBean.changePump}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
+	   			<p:commandButton action="#{userBean.changePump}" value="Sport aktualisieren" styleClass="ui-priority-primary"/>
 	   		</h:panelGroup>
 	   		<h:panelGroup></h:panelGroup>
 	   	</h:panelGrid>

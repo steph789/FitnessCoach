@@ -125,7 +125,17 @@ html, body {
 	background-color: #FEEEBD;
 	color: #002F2F;
 	float: left;
-	min-width: 600px;
+	width: 700px;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+#middle {
+	padding: 30px 30px 30px 30px;
+	background-color: #FEEEBD;
+	color: #002F2F;
+	float: left;
+	width: 700px;
 	padding-left: 20px;
 	padding-top: 20px;
 }
@@ -141,9 +151,9 @@ html, body {
 }
 
 .highlight1 {
-    background: #d1a575  !important ;
+    background: #d1a575  important;
 }
 
 .highlight2 {
-    background: #FEEEBD  !important ;
+    background: #FEEEBD  ;
 }

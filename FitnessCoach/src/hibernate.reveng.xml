@@ -5,4 +5,6 @@
   <table-filter match-catalog="fitness" match-name="friends"/>
   <table-filter match-catalog="fitness" match-name="user"/>
   <table-filter match-catalog="fitness" match-name="weights"/>
+  <table-filter match-catalog="fitness" match-name="workouts"/>
+  <table-filter match-catalog="fitness" match-name="weekplaner"/>
 </hibernate-reverse-engineering>

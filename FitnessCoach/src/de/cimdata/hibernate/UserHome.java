@@ -1,5 +1,6 @@
 package de.cimdata.hibernate;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -18,8 +19,10 @@ import org.hibernate.criterion.Restrictions;
  * @see de.cimdata.hibernate.User
  * @author Hibernate Tools
  */
-public class UserHome {
+public class UserHome implements Serializable{
 	
+
+	private static final long serialVersionUID = 1L;
 	private HibernateUtil hbn = HibernateUtil.getInstance();
 	
 	public UserHome() {

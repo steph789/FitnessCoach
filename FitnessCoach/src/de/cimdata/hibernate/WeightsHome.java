@@ -1,9 +1,11 @@
 package de.cimdata.hibernate;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -16,9 +18,10 @@ import org.hibernate.criterion.Restrictions;
  * @see de.cimdata.hibernate.Weights
  * @author Hibernate Tools
  */
-public class WeightsHome {
-	
-private HibernateUtil hbn = HibernateUtil.getInstance();
+public class WeightsHome implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	private HibernateUtil hbn = HibernateUtil.getInstance();
 	
 	public WeightsHome() {
 		hbn.createHibernateSession();
@@ -26,9 +29,11 @@ private HibernateUtil hbn = HibernateUtil.getInstance();
 	
 	public List<Weights> findWeightsByID(long userid) {
 		Session session = hbn.currentSession();
-		Criteria criteria = session.createCriteria(Weights.class);
-		criteria.add(Restrictions.like("user_id", userid));
-		return criteria.list();
+		Query q = null;
+		q = session.createQuery("From Weights w where w.userId= :userid");
+		q.setLong("userid", userid);
+		
+		return q.list();
 	}
 	
 	public double findLastWeight(List<Weights> list) {
@@ -49,10 +54,12 @@ private HibernateUtil hbn = HibernateUtil.getInstance();
 	}
 	
 	public void attachWeight(Weights weight) {
+		
 		Session session = hbn.currentSession();
 		Transaction t = session.beginTransaction();
 		
-		session.saveOrUpdate(weight);
+		session.save(weight);
+		System.out.println("Gewicht eingetragen: " + weight.getWeight());
 		t.commit();
 	}
 	

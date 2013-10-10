@@ -22,6 +22,7 @@ public class UserBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private User user;
 	private UserHome userhome;
+	private User newBuddy;
 	private Friends friends;
 	private FriendsHome friendshome;
 	private int userstate = 2;
@@ -29,31 +30,40 @@ public class UserBean implements Serializable{
 	private String tempPasswort;
 	private boolean loggedin;
 	private List<User> friendList;
+	private List<User> newBuddyList;
 	private SelectItem[] selectItems;
-	
+	private long userId;
 	public UserBean() {
 		user = new User();
+		newBuddy = new User();
 		userhome = new UserHome();
 		friends = new Friends();
 		friendshome = new FriendsHome();
 	}
-	
-	public SelectItem[] getUsersForFriends(List<User> friendList) {
-		int z = friendList.size();
-		List<SelectItem> selects = new ArrayList<>();
-		for(int i = 0; i < friendList.size(); i++) {
-			SelectItem item = new SelectItem(friendList.get(i).getUserId(), friendList.get(i).getUsername());
-			selects.add(item);
-		}
-		
-		SelectItem[] items = (SelectItem[]) selects.toArray();
-        return items;
-    }
-	
+
 	public User getUser() {
 		return user;
 	}
-	
+
+	public UserHome getUserhome() {
+		return userhome;
+	}
+
+	public User getNewBuddy() {
+		return newBuddy;
+	}
+
+	public Friends getFriends() {
+		return friends;
+	}
+
+	public FriendsHome getFriendshome() {
+		return friendshome;
+	}
+
+	public int getUserstate() {
+		return userstate;
+	}
 
 	public String getTempUsername() {
 		return tempUsername;
@@ -62,13 +72,43 @@ public class UserBean implements Serializable{
 	public String getTempPasswort() {
 		return tempPasswort;
 	}
-	
+
+	public boolean isLoggedin() {
+		return loggedin;
+	}
+
+	public List<User> getFriendList() {
+		friendList = friendshome.findAllFriendsID(this.user.getUserId());
+		return friendList;
+	}
+
+	public List<User> getNewBuddyList() {
+		newBuddyList = friendshome.findAllUserNotFriends(this.user.getUserId());
+		return newBuddyList;
+	}
+
+	public SelectItem[] getSelectItems() {
+		return selectItems;
+	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-	public int getUserstate() {
-		return userstate;
+	public void setUserhome(UserHome userhome) {
+		this.userhome = userhome;
+	}
+
+	public void setNewBuddy(User newBuddy) {
+		this.newBuddy = newBuddy;
+	}
+
+	public void setFriends(Friends friends) {
+		this.friends = friends;
+	}
+
+	public void setFriendshome(FriendsHome friendshome) {
+		this.friendshome = friendshome;
 	}
 
 	public void setUserstate(int userstate) {
@@ -79,22 +119,20 @@ public class UserBean implements Serializable{
 		this.tempUsername = tempUsername;
 	}
 
-
 	public void setTempPasswort(String tempPasswort) {
 		this.tempPasswort = tempPasswort;
 	}
 
-	public List<User> getFriendList() {
-		friendList = friendshome.findAllFriendsID(this.user.getUserId());
-		return friendList;
+	public void setLoggedin(boolean loggedin) {
+		this.loggedin = loggedin;
 	}
 
 	public void setFriendList(List<User> friendList) {
 		this.friendList = friendList;
 	}
 
-	public SelectItem[] getSelectItems() {
-		return selectItems;
+	public void setNewBuddyList(List<User> newBuddyList) {
+		this.newBuddyList = newBuddyList;
 	}
 
 	public void setSelectItems(SelectItem[] selectItems) {
@@ -151,14 +189,14 @@ public class UserBean implements Serializable{
 		return "profile";
 	}
 	
-	public String changeStatus() {
+	public void changeStatus() {
 		userhome.updateStatus(user.getUserId(),user.getStatus());
-		return "profile";
+		//return "profile";
 	}
 	
-	public String changeFitnesslevel() {
+	public void changeFitnesslevel() {
 		userhome.updateFitnesslevel(user.getUserId(),user.getFitnesslevel());
-		return "profile";
+		//return "profile";
 	}
 	
 	public String saveNewUser() {
@@ -167,9 +205,30 @@ public class UserBean implements Serializable{
 	}
 	
 	public String storeNewFriend() {
-		friendshome.attachNewFriend(friends);
+		System.out.println("------------------------------>storeNewFriend()");
+		friendshome.attachNewFriend(createFriendsByIds(user, userId));
 		return "friends";
 	}
 	
+	
+	public Friends createFriendsByIds(User loggedin, long id) {
+		Friends friends = new Friends();
+		
+		//System.out.println("Buddy: " + buddy.getUsername());
+		
+		friends.setUserId(loggedin.getUserId());
+		friends.setFriendId(id);
+		
+		return friends;
+	}
 
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+	
+	
 }

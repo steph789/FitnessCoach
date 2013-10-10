@@ -7,6 +7,7 @@ package de.cimdata.hibernate;
  */
 public class Friends implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Long friendshipId;
 	private long userId;
 	private long friendId;

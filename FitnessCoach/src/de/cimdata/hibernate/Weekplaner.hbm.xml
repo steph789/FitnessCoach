@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07.10.2013 11:17:37 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="de.cimdata.hibernate.Weekplaner" table="weekplaner" catalog="fitness">
+        <id name="planId" type="java.lang.Long">
+            <column name="plan_id" />
+            <generator class="identity" />
+        </id>      
+        <property name="userId" type="long">
+            <column name="user_id" not-null="true" />
+        </property>
+        <property name="monday" type="long">
+            <column name="monday" not-null="false" />
+        </property>
+        <property name="tuesday" type="long">
+            <column name="tuesday" not-null="false" />
+        </property>
+        <property name="wednesday" type="long">
+            <column name="wednesday" not-null="false" />
+        </property>
+        <property name="thursday" type="long">
+            <column name="thursday" not-null="false" />
+        </property>
+        <property name="friday" type="long">
+            <column name="friday" not-null="false" />
+        </property>
+        <property name="saturday" type="long">
+            <column name="saturday" not-null="false" />
+        </property>
+        <property name="sunday" type="long">
+            <column name="sunday" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>

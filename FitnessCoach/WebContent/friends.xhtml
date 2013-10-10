@@ -43,16 +43,23 @@
     		</p:dataTable>
 	   </div>
 	   
-	   <div>
+	   <div id="middle">
 	   <h2>Neue Freunde finden</h2>
 	   
-	   		<p:selectOneMenu value="#{userBean.}">  
-            	<f:selectItem itemLabel="#{userBean.selectItems}" itemValue="#{userBean.selectItems}" />  
-            	
-        	</p:selectOneMenu>
+	   		<h:form>
+	   
+	   			<p:selectOneMenu id="dropdown" value="#{userBean.userId}">  
+            		<f:selectItems value="#{userBean.newBuddyList}" var="friend" itemLabel="#{friend.username}" itemValue="#{friend.userId}"/>
+           		</p:selectOneMenu>
+           		        	
+        		<p:commandButton value="Als Freund hinzufügen" action="#{userBean.storeNewFriend}"/>
 	   		
+	   		</h:form>
+	   		
+	   		<p:messages/>
 	
 	   </div>
+	   
 	</ui:define>
 
 

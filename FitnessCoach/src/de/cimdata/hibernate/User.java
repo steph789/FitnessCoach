@@ -12,6 +12,7 @@ import org.primefaces.event.RateEvent;
  */
 public class User implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Long userId;
 	private String username;
 	private String password;
@@ -189,5 +190,12 @@ public class User implements java.io.Serializable {
 	public void setFitnesslevel(Integer fitnesslevel) {
 		this.fitnesslevel = fitnesslevel;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + "]";
+	}
+
+
 
 }

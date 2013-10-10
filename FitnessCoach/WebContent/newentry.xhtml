@@ -24,7 +24,9 @@
 	     <h:outputLabel for="weight" value="Gewicht:" style="font-weight:bold"/>                      
          <p:inputText id="weight" value="#{weightsBean.weights.weight}" required="true" label="Gewicht"/>
 	    
-	    <p:commandButton value="Gewicht eintragen" update="display" oncomplete="PF('dialog').show()" />
+	    <p:commandButton value="Gewicht eintragen" update="display" oncomplete="PF('dialog').show()" action="#{weightsBean.enterNewWeight}"/>
+	    
+	   
 	    
 	     <p:dialog header="Neuer Eintrag" widgetVar="dialog"   
             showEffect="fade" hideEffect="fade">  
@@ -41,8 +43,8 @@
 
         	</h:panelGrid>  
     	</p:dialog>
-    	
-	</h:form>   
+    	</h:form>
+	   
 	</ui:define>
 
 

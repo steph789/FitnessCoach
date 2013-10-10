@@ -1,5 +1,6 @@
 package de.cimdata.hibernate;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,12 @@ import org.hibernate.Transaction;
  * @see de.cimdata.hibernate.Friends
  * @author Hibernate Tools
  */
-public class FriendsHome {
+public class FriendsHome implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HibernateUtil hbn = HibernateUtil.getInstance();
 
 	public FriendsHome() {
@@ -50,45 +55,57 @@ public class FriendsHome {
 	public List<User> findAllUserNotFriends(long userid) {
 		List<User> friends = this.findAllFriendsID(userid);
 		List<User> users = new ArrayList<>();
+		List<User> newFriends = new ArrayList<>();
 		
 		Query q = null;
 		Session session = hbn.currentSession();
 		q = session.createQuery("From User");
 		users = q.list();
 		
+		
 		for(int i = 0; i < users.size(); i++) {
-			for(int j = 0; j < friends.size(); j++) {
-				if(users.get(i).equals(friends.get(j))) {
-					users.remove(i);
-				}
+			if(!friends.contains(users.get(i))) {
+				newFriends.add(users.get(i));
+				System.out.println("In neuer Liste: " + users.get(i).getUsername());
 			}
 		}
 		
-		return users;
+		Query q2 = null;
+		q2 = session.createQuery("From User u where u.userId= :userid");
+		q2.setLong("userid", userid);
+		User self = (User) q.list().get(0);
+		
+		newFriends.remove(self);
+		
+		return newFriends;
 	}
 	
 	public void attachNewFriend(Friends friends) {
-		Session session = hbn.currentSession();
-		Transaction t = session.beginTransaction();
+		Session session1 = hbn.currentSession();
+		Transaction t1 = session1.beginTransaction();
+		
+		System.out.println("------------------------Freunde eintragen: User " + friends.getUserId() + " - " + friends.getFriendId());
 		
 		//1. Eintrag eingeloggter User = user_id, der andere ist Freund
-		session.saveOrUpdate(friends);
-		
-		//2. Eintrag User und Freund tauschen Plätze
-		long temp = 0;
-		temp = friends.getUserId();
-		friends.setUserId(friends.getFriendId());
-		friends.setFriendId(temp);
-		session.saveOrUpdate(friends);
-		
-		t.commit();
-	}
+		session1.save(friends);
+		t1.commit();;
 
-	
+		Session session2 = hbn.currentSession();
+		
+		System.out.println("---------------------------Session 2 gestartet");
+		//2. Eintrag User und Freund tauschen Plätze
+		Friends friends2 = new Friends();
+		friends2.setUserId(friends.getFriendId());
+		friends2.setFriendId(friends.getUserId());
+		Transaction t2 = session2.beginTransaction();
+		session2.save(friends2);
+		t2.commit();
+
+	}
 	
 	public static void main(String[] args) {
 		FriendsHome fh = new FriendsHome();
-		System.out.println(fh.findAllFriendsID(1));
+		System.out.println(fh.findAllUserNotFriends(1));
 	}
 
 }
