@@ -43,8 +43,9 @@ public class WeightsBean implements Serializable{
 	}
 	
 	public String removeEntry()	{
-		weightId = weights.getWeightsId();
-		weightshome.deleteWeight(weightId);
+		System.out.println("+++++++++++++++++++++++++++ remove entry");
+		//weightId = weights.getWeightsId();
+		weightshome.deleteWeight(selectedWeight.getWeightsId());
 		System.out.println("+++++++++++++++++++++++++++ remove entry");
 		return "newentry";
 	}

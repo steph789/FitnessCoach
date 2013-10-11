@@ -16,6 +16,7 @@
 
 
 	<ui:define name="content">
+	<h2>Dein Wochenplan</h2>
 	<h:form id="dragform">  
   
     <p:fieldset legend="Ihre verfügbaren Trainingseinheiten">  
@@ -27,11 +28,11 @@
   
                 <p:panel id="pnl" header="#{workout.name}" style="text-align:center">  
                     <h:panelGrid columns="1" style="width:100%">  
-                        <p:graphicImage value="/images/#{weekPlanerBean.workouts.sport}.jpg"/>  
+                        <p:graphicImage  value="resources/images/#{workout.sport}.jpg"/>  
                     </h:panelGrid>  
                 </p:panel>  
-  
-                <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>  
+                
+                <p:draggable id="dd" for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>  
   
             </p:column>  
   
@@ -80,9 +81,11 @@
   
     </p:fieldset>  
   
-    <p:droppable for="Workouts" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableWorkouts" onDrop="handleDrop">  
+    <p:droppable  id="dad" for="monday" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableWorkouts" onDrop="handleDrop">  
         <p:ajax listener="#{weekPlanerBean.onWorkoutDrop}" update="dropArea availableWorkouts" />  
-    </p:droppable>  
+    </p:droppable>
+    
+
   
     <p:dialog header="Workout Details" widgetVar="wDialog" resizable="false" draggable="false"  
               width="200" showEffect="fade" hideEffect="fade" modal="true">  

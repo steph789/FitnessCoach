@@ -51,8 +51,9 @@
 	   			<p:selectOneMenu id="dropdown" value="#{userBean.userId}">  
             		<f:selectItems value="#{userBean.newBuddyList}" var="friend" itemLabel="#{friend.username}" itemValue="#{friend.userId}"/>
            		</p:selectOneMenu>
-           		        	
-        		<p:commandButton value="Als Freund hinzufügen" action="#{userBean.storeNewFriend}"/>
+           		
+           		<br/><br/>        	
+        		<p:commandButton value="Als Freund hinzufügen" action="#{userBean.storeNewFriend}" update=":table"/>
 	   		
 	   		</h:form>
 	   		

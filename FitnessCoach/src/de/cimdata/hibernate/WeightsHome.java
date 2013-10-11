@@ -64,12 +64,19 @@ public class WeightsHome implements Serializable{
 		//Long id = weights.getWeightsId();
 		Session session = hbn.currentSession();
 		Transaction t = session.beginTransaction();
-		Query q = null;
-		q = session.createQuery("delete from Weights w where w.weightsId= :id");
-		q.setLong("id", wid);
+		//Query q = null;
+		//q = session.createQuery("delete from Weights w where w.weightsId= :id");
+		
+		Weights weight = (Weights) session.load(Weights.class, wid);
+		session.delete(weight);
+		//q.setLong("id", wid);
 		System.out.println(":::::::::::::::::::::::::::::::::::::::Eintrag wird gelöscht: " + wid);
 		
 		t.commit();
+		
+		System.out.println("committed?"+t.wasCommitted());
+		
+		
 	}
 	
 	

@@ -20,10 +20,11 @@
 	<h:form>
 	   
 	    <p:calendar value="#{weightsBean.weights.date}" mode="inline" id="inlineCal"/>
+	    <br/><br/>
 	    
 	     <h:outputLabel for="weight" value="Gewicht:" style="font-weight:bold"/>                      
          <p:inputText id="weight" value="#{weightsBean.weights.weight}" required="true" label="Gewicht"/>
-	    
+	   	 <br/><br/>
 	    <p:commandButton value="Gewicht eintragen" update="display" oncomplete="PF('dialog').show()" action="#{weightsBean.enterNewWeight}"/>
 	    
 	   

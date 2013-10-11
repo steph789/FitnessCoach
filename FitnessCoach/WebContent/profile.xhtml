@@ -26,6 +26,7 @@
 	   		</h:panelGroup>
 	   		<h:form>
 	   		<h:panelGroup>
+	   			<h4>Status:</h4>
 	   			<p:selectOneMenu value="#{userBean.user.status}" >  
             		<f:selectItem itemLabel="spitze" itemValue="spitze" />  
             		<f:selectItem itemLabel="glücklich" itemValue="glücklich" />  
@@ -39,6 +40,7 @@
             		<f:selectItem itemLabel="enttäuscht" itemValue="enttäuscht" />
             		<p:ajax listener="#{userBean.changeStatus()}"/>
        			 </p:selectOneMenu>
+       			 <h4>Fitnesslevel:</h4>
        			 <p:rating id="rating" value="#{userBean.user.fitnesslevel}" stars="7" cancel="false" onRate="alert('Dein Fitnesslevel ' + value + ' von 7')">
        				 <p:ajax listener="#{userBean.changeFitnesslevel()}"/>
        			 </p:rating>

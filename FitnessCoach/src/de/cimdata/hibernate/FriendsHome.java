@@ -71,10 +71,16 @@ public class FriendsHome implements Serializable{
 		}
 		
 		Query q2 = null;
-		q2 = session.createQuery("From User u where u.userId= :userid");
-		q2.setLong("userid", userid);
-		User self = (User) q.list().get(0);
+		q2 = session.createQuery("From User u where u.userId= :id");
+		q2.setLong("id", userid);
 		
+		List<User> selfliste = new ArrayList<>();
+		selfliste = q2.list();
+		User self = new User();
+		for (User user : selfliste) {
+			self = user;
+		}
+				
 		newFriends.remove(self);
 		
 		return newFriends;
@@ -88,7 +94,7 @@ public class FriendsHome implements Serializable{
 		
 		//1. Eintrag eingeloggter User = user_id, der andere ist Freund
 		session1.save(friends);
-		t1.commit();;
+		t1.commit();
 
 		Session session2 = hbn.currentSession();
 		

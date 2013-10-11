@@ -18,13 +18,14 @@
 
 	   <div id="top">
 	   <h2>Auswertung</h2>
-			<p:dataTable id="table" var="wg" value="#{weightsBean.listAllWeights}" rowKey="#{wg.date}"
+	   <h:form>
+			<p:dataTable id="table" var="wg" value="#{weightsBean.listAllWeights}" rowKey="#{wg}"
 						rowStyleClass="#{(rowIndex mod 2) eq 0 ? 'highlight1' : 'highlight2'}"
-						selection="#{weightsBean.weights.weightsId}" selectionMode="single">
+						selection="#{weightsBean.selectedWeight}" selectionMode="single" >
  
     			<p:column>  
             		<f:facet name="header">Datum</f:facet>  
-            		<h:outputText value="#{wg.date}" />  
+            		<h:outputText value="#{wg.date}"/>  
         		</p:column>
         		
         		<p:column>  
@@ -37,7 +38,7 @@
         		</f:facet>
  
     		</p:dataTable>
-    		
+    	</h:form>	
     		
         
 	   </div>
